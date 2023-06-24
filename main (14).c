@@ -1,31 +1,21 @@
-#include <stdio.h>
-#include <string.h>
-
-int minMelodies(char s[], int n) {
-    int count = 1; // Initialize count as 1 since we need at least one melody
-    for (int i = 1; i < n; i++) {
-        if (s[i] != s[i-1]) {
-            count++; 
-        }
-    }
-    return (count + 1) / 2;  
+#include<stdio.h>
+int main()
+{
+int i=0,j=0,k=0,x=0,rem=0,sum=0,count=0;
+scanf("%d%d%d",&i,&j,&k);
+for(i;i<=j;i++)
+{
+x=i;
+while(x!=0)
+{
+rem=x%10;
+sum=(sum*10)+rem;
+x=x/10;
 }
-
-int main() {
-    int t;
-    scanf("%d", &t);
-    
-    while (t--) {
-        int n;
-        scanf("%d", &n); 
-        
-        char s[51];
-        scanf("%s", s); 
-        
-        int result = minMelodies(s, n); 
-        
-        printf("%d\n", result); 
-    }
-    
-    return 0;
+if(abs(i-sum)%k==0)
+count=count+1;
+sum=0;
+}
+printf("%d",count);
+return 0;
 }
