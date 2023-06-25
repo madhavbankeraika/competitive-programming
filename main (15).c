@@ -1,25 +1,26 @@
-#include <stdio.h>
-#include <string.h>
-
-int main() {
-    int t;
-    scanf("%d", &t);
-
-    while (t--) {
-        char s[11];  
-        scanf("%s", s);
-
-        char target[] = "codeforces";
-        int diff = 0;
-        int i;
-
-        for (i = 0; i < 10; i++) {
-            if (s[i] != target[i])
-                diff++;
-        }
-
-        printf("%d\n", diff);
+#include<stdio.h>
+int main(){
+    int n;
+    int k;
+    scanf("%d %d",&n,&k);
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
     }
-
+    int temp;
+    int req;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]>=arr[i+1])
+        { arr[0]=arr[i];
+      
+        }
+  else
+  {
+    arr[0]=arr[i+1];
+  }}
+  
+    printf("%d",arr[0]);
     return 0;
 }
