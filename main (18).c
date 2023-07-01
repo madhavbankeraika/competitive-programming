@@ -1,49 +1,41 @@
+#include <math.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
 
-int main() {
-    int t;
-    scanf("%d", &t);
+int main(void)
+{
+    int s, t, a, b, m, n, i, c1 = 0, c2 = 0;
+    scanf("%d %d\n", &s, &t);
+    scanf("%d %d\n", &a, &b); 
+    scanf("%d %d\n", &m, &n);
 
-    while (t--) {
-        int n, q;
-        scanf("%d%d", &n, &q);
-
-        int a[n];
-        for (int i = 0; i < n; i++) {
-            scanf("%d", &a[i]);
-        }
-
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += a[i];
-        }
-
-        while (q--) {
-            int l, r, k;
-            scanf("%d%d%d", &l, &r, &k);
-
-            int diff = 0;
-            for (int i = l - 1; i < r; i++) {
-                diff += a[i] - k;
-            }
-
-            if (k % 2 == 0) {
-                sum += diff;
-            } else {
-                sum -= diff;
-            }
-
-            for (int i = l - 1; i < r; i++) {
-                a[i] = k;
-            }
-
-            if (sum % 2 == 0) {
-                printf("NO\n");
-            } else {
-                printf("YES\n");
-            }
+    for(i = 0; i < m; i++)
+    {
+        int tmp;
+        scanf("%d", &tmp);
+        tmp = a + tmp;
+        
+        if(tmp >= s && tmp <= t)
+        {
+            c1++;
         }
     }
 
-    return 0;
+    for(i = 0; i < n; i++)
+    {
+        int tmp;
+        scanf("%d", &tmp);
+        tmp = b + tmp;
+        
+        if(tmp >= s && tmp <= t)
+        {
+            c2++;
+        }
+    }
+    
+    printf("%d\n%d", c1, c2);
 }
