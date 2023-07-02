@@ -1,38 +1,48 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
-int main() {
-    int t;
-    scanf("%d", &t);
 
-    while (t--) {
-        int n;
-        scanf("%d", &n);
 
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            scanf("%d", &arr[i]);
-        }
-
-        int longestSpace = 0;
-        int currentSpace = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == 0) {
-                currentSpace++;
-            } else {
-                if (currentSpace > longestSpace) {
-                    longestSpace = currentSpace;
-                }
-                currentSpace = 0;
-            }
-        }
-
-        if (currentSpace > longestSpace) {
-            longestSpace = currentSpace;
-        }
-
-        printf("%d\n", longestSpace);
-    }
+int main() 
+{
+    int a, b;
+    scanf("%d\n%d", &a, &b);
+  	for(int i=a;i<=b;i++)
+      {
+          if(i==1)
+         { printf("one\n");}
+          if(i==2)
+         {printf("two\n");}
+          if(i==3)
+         {printf("three\n");}
+          if(i==4)
+         {printf("four\n");}
+          if(i==5)
+         {printf("five\n");}
+         if(i==6)
+         {printf("six\n");}
+         if(i==7)
+         {printf("seven\n");}
+         if(i==8)
+         {printf("eight\n");}
+         if(i==9)
+         {printf("nine\n");}
+         else if(i>9 && i%2==0)
+         {
+             printf("even\n");
+             
+         }
+         else if(i>9 && i%2==1)
+         {
+             printf("odd\n");
+             
+         }
+                   
+                   
+      }
 
     return 0;
 }
+
