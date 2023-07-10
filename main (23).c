@@ -1,48 +1,47 @@
 #include <stdio.h>
 
-int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
-    // Initialize variables
-    int i, j;
-    int* result = NULL;
-    
-    // Iterate through each element in the array
-    for (i = 0; i < numsSize; i++) {
-        // Check if the current element plus any other element equals the target
-        for (j = i + 1; j < numsSize; j++) {
-            if (nums[i] + nums[j] == target) {
-                // Allocate memory for the result array
-                result = (int*)malloc(2 * sizeof(int));
-                result[0] = i;
-                result[1] = j;
-                
-                // Set the size of the result array
-                *returnSize = 2;
-                
-                // Return the result array
-                return result;
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void reverse(int* nums, int l, int r) {
+    while (l < r)
+        swap(&nums[l++], &nums[r--]);
+}
+
+void nextPermutation(int* nums, int n) {
+    int i;
+    for (i = n - 2; i >= 0; --i) {
+        if (nums[i] < nums[i + 1]) {
+            break;
+        }
+    }
+
+    if (i >= 0) {
+        for (int j = n - 1; j > i; --j) {
+            if (nums[j] > nums[i]) {
+                swap(&nums[i], &nums[j]);
+                break;
             }
         }
     }
-    
-    // No solution found, return NULL
-    return NULL;
+
+    reverse(nums, i + 1, n - 1);
 }
 
 int main() {
-    int nums[] = {2, 7, 11, 15};
-    int target = 9;
-    int returnSize;
-    
-    // Call the twoSum function
-    int* result = twoSum(nums, sizeof(nums) / sizeof(nums[0]), target, &returnSize);
-    
-    // Print the result
-    if (result != NULL) {
-        printf("Indices: %d, %d\n", result[0], result[1]);
-        free(result); // Free the allocated memory
-    } else {
-        printf("No solution found.\n");
+    int nums[] = {1, 2, 3}; // Example input
+    int n = sizeof(nums) / sizeof(nums[0]);
+
+    nextPermutation(nums, n);
+
+    printf("Next permutation: ");
+    for (int i = 0; i < n; ++i) {
+        printf("%d ", nums[i]);
     }
-    
+    printf("\n");
+
     return 0;
 }
